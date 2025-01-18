@@ -1,6 +1,6 @@
 import { passwordValidator } from "./../middleware/passwordValidator";
 import { Request, Response, Router } from "express";
-import { signUp } from "./../controller/user.controller";
+import { signIn, signUp } from "./../controller/user.controller";
 
 const router = Router();
 
@@ -56,5 +56,54 @@ router.post(
     await signUp(req, res);
   }
 );
+
+/**
+ * @swagger
+ *  /user/login:
+ *   post:
+ *    tags:
+ *      - users
+ *    summary: 로그인
+ *    description: 로그인 API입니다.
+ *    requestBody:
+ *      content:
+ *          application/json:
+ *              schema:
+ *                  $ref: '#/components/schemas/LoginDto'
+ *    responses:
+ *       200:
+ *         description: 로그인 성공
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "eyakdzkl.asdf.erwsa"
+ *       400:
+ *         description: 잘못된 username 혹은 password
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "username 혹은 password를 확인해주세요"
+ *       500:
+ *         description: 서버 오류
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "서버에서 문제가 발생했습니다."
+ */
+router.post("/login", async (req: Request, res: Response) => {
+  await signIn(req, res);
+});
 
 export default router;

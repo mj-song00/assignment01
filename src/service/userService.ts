@@ -37,23 +37,41 @@ export const createUser = async (createUser: CreateUserDto) => {
   }
 };
 
-// export const login = async (loginDto: LoginDto) => {
-//   const { email, password } = loginDto;
-//   const user = await prisma.user.findUnique({
-//     where: { email },
-//   });
+export const login = async (loginDto: LoginDto) => {
+  const { username, password } = loginDto;
+  const user = await prisma.user.findUnique({
+    where: { username },
+  });
 
-//   const checkPassword = await Bcrypt.compare(password, user?.password);
-//   if (!user || !checkPassword)
-//     return { error: "email 혹은 password를 확인해주세요." };
+  const checkPassword = await Bcrypt.compare(password, user?.password);
+  if (!user || !checkPassword)
+    return { error: "username 혹은 password를 확인해주세요.", statusCode: 400 };
 
-//   const accessToken = jwt.sigin({ userId: user.id }, process.env.SECRET_KEY, {
-//     expiresIn: "30m",
-//   });
+  const token = jwt.sign(
+    {
+      userId: user.id,
+    },
+    process.env.SECRET_KEY,
+    {
+      expiresIn: "30m",
+    }
+  );
 
-//   const refreshToken = jwt.sigin({ userId: user.id }, process.env.REFRESH_KEY, {
-//     expiresIn: "1d",
-//   });
-// };
+  const response = {
+    token,
+  };
+  const refreshToken = jwt.sign({ userId: user.id }, process.env.REFRESH_KEY, {
+    expiresIn: "1d",
+  });
 
-export default { createUser };
+  const saveToekn = await prisma.user.update({
+    where: {
+      id: user.id,
+    },
+    data: { refreshToken },
+  });
+
+  return { result: response, statusCode: 200 };
+};
+
+export default { createUser, login };

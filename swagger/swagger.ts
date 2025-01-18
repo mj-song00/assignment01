@@ -52,6 +52,21 @@ const options = {
             },
           },
         },
+        LoginDto: {
+          type: "object",
+          properties: {
+            username: {
+              type: "string",
+              description: "사용자 닉네임",
+              example: "송민지",
+            },
+            password: {
+              type: "string",
+              description: "비밀번호",
+              example: "Asdf1234!",
+            },
+          },
+        },
         ErrorResponse: {
           type: "object",
           properties: {
