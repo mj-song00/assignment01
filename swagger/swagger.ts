@@ -40,10 +40,10 @@ const options = {
               description: "사용자 닉네임",
               example: "송민지",
             },
-            email: {
+            nickname: {
               type: "string",
-              description: "user email",
-              example: "test@test.com",
+              description: "nickname",
+              example: "모코코",
             },
             password: {
               type: "string",

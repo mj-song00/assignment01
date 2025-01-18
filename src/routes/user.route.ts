@@ -29,7 +29,7 @@ const router = Router();
  *                   type: string
  *                   example: "success"
  *       400:
- *         description: 존재하는 email 혹은 username
+ *         description: 존재하는 nicknmae 혹은 username
  *         content:
  *           application/json:
  *             schema:
@@ -37,7 +37,7 @@ const router = Router();
  *               properties:
  *                 message:
  *                   type: string
- *                   example: "email 혹은 username이 존재합니다."
+ *                   example: "nickname 혹은 username이 존재합니다."
  *       500:
  *         description: 서버 오류
  *         content:

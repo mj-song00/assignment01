@@ -8,9 +8,9 @@ export const signUp = async (
 ): Promise<Response> => {
   const createUserDto: CreateUserDto = req.body;
 
-  if (!createUserDto.email || !createUserDto.username) {
+  if (!createUserDto.nickname || !createUserDto.username) {
     return res.status(400).json({
-      message: "email, username은 필수로 작성해주세요",
+      message: "nickname, username은 필수로 작성해주세요",
     });
   }
 
