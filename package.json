@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon app.ts",
-    "swagger-autogen": "ts-node swagger/swagger.ts"
+    "dev": "nodemon app.ts"
   },
   "author": "송민지",
   "license": "ISC",
@@ -16,8 +15,7 @@
     "class-validator": "^0.14.1",
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
-    "prisma": "^6.2.1",
-    "swagger-autogen": "^2.23.7"
+    "prisma": "^6.2.1"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
