@@ -18,7 +18,13 @@ app.use(
   })
 );
 app.use("/user", UserRouter);
-app.use("/docs", swaggerUi.serve, swaggerUi.setup(specs));
+app.use(
+  "/docs",
+  swaggerUi.serve,
+  swaggerUi.setup(specs, {
+    swaggerUrl: "http://13.125.244.132:3000/docs/swagger.json",
+  })
+);
 
 app.use((req: Request, res: Response) => {
   res.status(404).send("Page Not Found!");

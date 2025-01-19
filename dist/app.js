@@ -19,7 +19,9 @@ app.use(cors({
     allowedHeaders: ["Content-Type", "Authorization"],
 }));
 app.use("/user", user_route_1.default);
-app.use("/docs", swaggerUi.serve, swaggerUi.setup(specs));
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(specs, {
+    swaggerUrl: "http://13.125.244.132:3000/docs/swagger.json",
+}));
 app.use((req, res) => {
     res.status(404).send("Page Not Found!");
 });
