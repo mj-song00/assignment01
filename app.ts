@@ -10,7 +10,13 @@ app.use(express.json());
 app.get("/", (req: Request, res: Response) => {
   res.send("아 속편하다 ㅠㅠ 자동저장이라니 ㅠㅠ");
 });
-app.use(cors({ origin: "*", credentials: true }));
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 app.use("/user", UserRouter);
 app.use("/docs", swaggerUi.serve, swaggerUi.setup(specs));
 

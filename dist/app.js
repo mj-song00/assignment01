@@ -13,7 +13,11 @@ app.use(express_1.default.json());
 app.get("/", (req, res) => {
     res.send("아 속편하다 ㅠㅠ 자동저장이라니 ㅠㅠ");
 });
-app.use(cors({ origin: "*", credentials: true }));
+app.use(cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+}));
 app.use("/user", user_route_1.default);
 app.use("/docs", swaggerUi.serve, swaggerUi.setup(specs));
 app.use((req, res) => {
