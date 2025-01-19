@@ -56,9 +56,11 @@ export const login = async (loginDto: LoginDto) => {
   const user = await prisma.user.findUnique({
     where: { username },
   });
+  if (!user)
+    return { error: "username 혹은 password를 확인해주세요.", statusCode: 400 };
 
   const checkPassword = await Bcrypt.compare(password, user?.password);
-  if (!user || !checkPassword)
+  if (!checkPassword)
     return { error: "username 혹은 password를 확인해주세요.", statusCode: 400 };
 
   const token = jwt.sign(

@@ -62,8 +62,10 @@ const login = (loginDto) => __awaiter(void 0, void 0, void 0, function* () {
     const user = yield prisma.user.findUnique({
         where: { username },
     });
+    if (!user)
+        return { error: "username 혹은 password를 확인해주세요.", statusCode: 400 };
     const checkPassword = yield Bcrypt.compare(password, user === null || user === void 0 ? void 0 : user.password);
-    if (!user || !checkPassword)
+    if (!checkPassword)
         return { error: "username 혹은 password를 확인해주세요.", statusCode: 400 };
     const token = jwt.sign({
         userId: user.id,
