@@ -11,7 +11,7 @@ const app = (0, express_1.default)();
 const port = 3000;
 app.use(express_1.default.json());
 app.get("/", (req, res) => {
-    res.send("아 속편하다 ㅠㅠ 자동저장이라니 ㅠㅠ");
+    res.send("한달인턴 과제");
 });
 app.use(cors({
     origin: "*",

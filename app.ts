@@ -8,7 +8,7 @@ const port: number = 3000;
 
 app.use(express.json());
 app.get("/", (req: Request, res: Response) => {
-  res.send("아 속편하다 ㅠㅠ 자동저장이라니 ㅠㅠ");
+  res.send("한달인턴 과제");
 });
 app.use(
   cors({
