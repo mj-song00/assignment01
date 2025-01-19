@@ -21,7 +21,7 @@ const options = {
                 description: "Local Development",
             },
             {
-                url: "http://13.125.244.132:3000/",
+                url: "http://13.125.244.132:3000",
                 description: "배포서버",
             },
             // {
