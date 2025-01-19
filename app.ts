@@ -2,7 +2,7 @@ import express, { Application, Request, Response } from "express";
 import UserRouter from "./src/routes/user.route";
 
 const cors = require("cors");
-const { swaggerUi, specs } = require("./swagger");
+const { swaggerUi, specs } = require("./swagger/swagger");
 const app: Application = express();
 const port: number = 3000;
 
