@@ -20,7 +20,7 @@ app.use((req: Request, res: Response) => {
 
 const startServer = () => {
   app.listen(port, () => {
-    console.log(`Server running at http://localhost:${port}`);
+    console.log(`연결완료`);
   });
 };
 
