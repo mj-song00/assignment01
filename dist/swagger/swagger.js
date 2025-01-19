@@ -1,6 +1,7 @@
 "use strict";
 const swaggerUi = require("swagger-ui-express");
 const swaggerJsdoc = require("swagger-jsdoc");
+const path = require("path");
 const options = {
     definition: {
         openapi: "3.0.0",
@@ -98,7 +99,7 @@ const options = {
             },
         },
     },
-    apis: ["dist/src/routes/*.js"],
+    apis: [path.join(__dirname, "dist/src/routes/*.js")],
 };
 const specs = swaggerJsdoc(options);
 module.exports = {
