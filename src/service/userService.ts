@@ -8,11 +8,25 @@ export const createUser = async (createUser: CreateUserDto) => {
   const { username, nickname, password } = createUser;
   try {
     const duplicateUser = await prisma.user.findUnique({
-      where: { nickname, username },
+      where: { username }, // username만 중복 확인
     });
-    if (duplicateUser)
-      return { error: "email 혹은 username이 존재합니다.", statusCode: 400 };
+    if (duplicateUser) {
+      return {
+        error: "username혹은 nickname을 확인해주세요.",
+        statusCode: 400,
+      };
+    }
 
+    const duplicateNickname = await prisma.user.findUnique({
+      where: { nickname }, // nickname만 중복 확인
+    });
+
+    if (duplicateNickname) {
+      return {
+        error: "nickname 혹은 username을 확인해주세요",
+        statusCode: 400,
+      };
+    }
     const salt = await Bcrypt.genSalt();
     const pwhash = await Bcrypt.hash(password, salt);
 

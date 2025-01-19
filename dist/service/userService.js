@@ -18,10 +18,23 @@ const createUser = (createUser) => __awaiter(void 0, void 0, void 0, function* (
     const { username, nickname, password } = createUser;
     try {
         const duplicateUser = yield prisma.user.findUnique({
-            where: { nickname, username },
+            where: { username }, // username만 중복 확인
         });
-        if (duplicateUser)
-            return { error: "email 혹은 username이 존재합니다.", statusCode: 400 };
+        if (duplicateUser) {
+            return {
+                error: "username혹은 nickname을 확인해주세요.",
+                statusCode: 400,
+            };
+        }
+        const duplicateNickname = yield prisma.user.findUnique({
+            where: { nickname }, // nickname만 중복 확인
+        });
+        if (duplicateNickname) {
+            return {
+                error: "nickname 혹은 username을 확인해주세요",
+                statusCode: 400,
+            };
+        }
         const salt = yield Bcrypt.genSalt();
         const pwhash = yield Bcrypt.hash(password, salt);
         const newUser = yield prisma.user.create({
