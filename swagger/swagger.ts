@@ -87,7 +87,15 @@ const options = {
             message: {
               type: "string",
               description: "요청 완료",
-              example: "success",
+              example: {
+                username: "JIN HO",
+                nickname: "Mentos",
+                authorities: [
+                  {
+                    authorityName: "ROLE_USER",
+                  },
+                ],
+              },
             },
             statusCode: {
               type: "integer",
