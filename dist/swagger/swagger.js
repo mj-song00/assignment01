@@ -1,6 +1,11 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 const swaggerUi = require("swagger-ui-express");
 const swaggerJsdoc = require("swagger-jsdoc");
+const path_1 = __importDefault(require("path"));
 const options = {
     definition: {
         openapi: "3.0.0",
@@ -98,7 +103,10 @@ const options = {
             },
         },
     },
-    apis: ["src/routes/*.ts", "./swagger/*", "dist/routes/*.js"],
+    apis: [
+        path_1.default.join(__dirname, "src/routes/*.ts"), // 개발 환경
+        path_1.default.join(__dirname, "dist/src/routes/*.js"), // 배포 환경
+    ],
 };
 const specs = swaggerJsdoc(options);
 module.exports = {
