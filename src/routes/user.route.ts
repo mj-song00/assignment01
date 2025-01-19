@@ -26,8 +26,16 @@ const router = Router();
  *               type: object
  *               properties:
  *                 message:
- *                   type: string
- *                   example: "success"
+ *                   type: objcet
+ *                   example: {
+ *                username: "JIN HO",
+ *               nickname: "Mentos",
+ *               authorities: [
+ *                 {
+ *                   authorityName: "ROLE_USER",
+ *                 },
+ *               ],
+ *             },
  *       400:
  *         description: 존재하는 nicknmae 혹은 username
  *         content:
