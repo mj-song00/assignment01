@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const user_route_1 = __importDefault(require("./src/routes/user.route"));
 const cors = require("cors");
-const { swaggerUi, specs } = require("./swagger/swagger");
+const { swaggerUi, specs } = require("./swagger");
 const app = (0, express_1.default)();
 const port = 3000;
 app.use(express_1.default.json());
