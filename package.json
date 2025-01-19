@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "한달인턴 node.js 과제",
   "main": "index.js",
+  "type":"module",
   "scripts": {
     "test": "NODE_ENV=test dotenv -c .env.test -- jest --runInBand --detectOpenHandles",
     "dev": "nodemon app.ts"
