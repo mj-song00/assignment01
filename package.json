@@ -4,7 +4,7 @@
   "description": "한달인턴 node.js 과제",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "NODE_ENV=test dotenv -c .env.test -- jest --runInBand --detectOpenHandles",
     "dev": "nodemon app.ts"
   },
   "author": "송민지",
@@ -13,16 +13,21 @@
     "@prisma/client": "^6.2.1",
     "bcrypt": "^5.1.1",
     "class-validator": "^0.14.1",
+    "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
     "prisma": "^6.2.1"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
+    "@types/jest": "^29.5.14",
     "@types/node": "^22.10.7",
     "@types/swagger-ui-express": "^4.1.7",
+    "dotenv-cli": "^8.0.0",
+    "supertest": "^7.0.0",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1",
+    "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3"
   },

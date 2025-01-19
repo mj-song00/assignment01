@@ -18,6 +18,14 @@ app.use((req: Request, res: Response) => {
   res.status(404).send("Page Not Found!");
 });
 
-app.listen(port, function () {
-  console.log(`http://localhost:${port} !`);
-});
+const startServer = () => {
+  app.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}`);
+  });
+};
+
+if (require.main === module) {
+  startServer(); // 서버가 직접 실행될 때만 서버 시작
+}
+
+module.exports = { app, startServer };

@@ -1,5 +1,3 @@
-import { describe } from "node:test";
-
 const swaggerUi = require("swagger-ui-express");
 const swaggerJsdoc = require("swagger-jsdoc");
 
