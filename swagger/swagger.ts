@@ -17,12 +17,12 @@ const options = {
     servers: [
       {
         url: "http://localhost:3000",
-        // description: "Local Development",
+        description: "Local Development",
       },
-      // {
-      //   url: "http://test.co.kr/",
-      //   description: "Test Server",
-      // },
+      {
+        url: "http://13.125.244.132:3000/",
+        description: "배포서버",
+      },
       // {
       //   url: "http://real.co.kr/",
       //   description: "Real Server",
