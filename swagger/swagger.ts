@@ -1,6 +1,5 @@
 const swaggerUi = require("swagger-ui-express");
 const swaggerJsdoc = require("swagger-jsdoc");
-import path from "path";
 
 const options = {
   definition: {
@@ -99,10 +98,7 @@ const options = {
       },
     },
   },
-  apis: [
-    path.join(__dirname, "src/routes/*.ts"), // 개발 환경
-    path.join(__dirname, "dist/src/routes/*.js"), // 배포 환경
-  ],
+  apis: ["dist/src/routes/*.js"],
 };
 
 const specs = swaggerJsdoc(options);
